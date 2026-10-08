@@ -108,7 +108,7 @@ api/                 ThinkPHP API、配置、完整数据库结构和迁移
 web/                 Vue 桌面端、手机端与共享业务逻辑
 android-shell/       Android 在线网页壳源码和构建脚本
 deploy/              Docker、Nginx、定时任务和发布模板
-docs/                文档与仅含虚构数据的截图
+docs/                文档、演示截图与联系二维码
 scripts/             开源文件检查工具
 ```
 
@@ -121,6 +121,12 @@ cd .. && python3 scripts/check-public-tree.py
 ```
 
 提交前不要加入 `.env`、数据库导出、附件、日志或个人信息。请阅读 [贡献说明](CONTRIBUTING.md) 和 [安全说明](SECURITY.md)。历史 [设计方案](docs/设计方案.md) 仅供理解早期设计，功能与结构以当前源码为准。
+
+## 联系与交流
+
+欢迎扫码添加微信，交流使用体验、反馈建议。
+
+<img src="docs/images/wechat-contact.jpg" width="360" alt="微信联系二维码">
 
 ## 许可证
 

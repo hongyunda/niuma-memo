@@ -17,6 +17,8 @@ ALLOWED_BINARIES = {
     'web/public/icons/apple-touch-icon.png',
     'docs/screenshots/desktop-home.png', 'docs/screenshots/desktop-project.png',
     'docs/screenshots/mobile-home.png', 'docs/screenshots/mobile-note.png',
+    # Contact image explicitly approved by the maintainer for public display.
+    'docs/images/wechat-contact.jpg',
 }
 BLOCKED_PARTS = {
     '.signing', '.claude', '.codex', '.playwright-cli', 'node_modules', 'vendor',
