@@ -1,0 +1,73 @@
+# 牛马备忘录 · 一键部署
+#   1. cp ../api/.example.env ../api/.env 并填好数据库密码、JWT_SECRET、APP_URL、ASR 密钥
+#   2. 证书放到 deploy/certs/fullchain.pem privkey.pem（certbot 或宝塔申请后拷过来）
+#   3. docker compose up -d --build
+#   4. docker compose exec php composer install --no-dev -o
+#   5. docker compose exec php php think migrate:run
+#   6. docker compose exec php php think user:create laowang laowang --nickname=老王
+#   7. docker compose exec php php think push:vapid   → 写入 .env 后 docker compose restart php cron
+services:
+  php:
+    build: ./php
+    restart: unless-stopped
+    volumes:
+      - ../api:/var/www/api
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks: [memo]
+
+  # 每分钟扫描到期提醒、处理排队的语音转写
+  cron:
+    build: ./php
+    restart: unless-stopped
+    command: sh -c "while true; do php think reminder:scan; php think asr:run; php think notes:titles; sleep 60; done"
+    volumes:
+      - ../api:/var/www/api
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks: [memo]
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+      - ../api/public:/var/www/api/public:ro
+      - ../api/storage/uploads:/var/www/api/storage/uploads:ro
+    depends_on: [php]
+    networks: [memo]
+
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --ngram_token_size=2
+      --innodb_buffer_pool_size=256M
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?请在 deploy/.env 设置数据库 root 密码}
+      MYSQL_DATABASE: niuma_memo
+      MYSQL_USER: memo
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?请在 deploy/.env 设置应用数据库密码}
+      TZ: Asia/Shanghai
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD:?请在 deploy/.env 设置数据库 root 密码}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [memo]
+
+volumes:
+  mysql-data:
+
+networks:
+  memo:

@@ -1,0 +1,6 @@
+# 裸机 / 宝塔部署时加到 crontab -e（Docker 部署已由 cron 容器代替）
+* * * * * cd /var/www/api && php think reminder:scan >> runtime/reminder.log 2>&1
+* * * * * cd /var/www/api && php think asr:run >> runtime/asr.log 2>&1
+* * * * * cd /var/www/api && php think notes:titles >> runtime/titles.log 2>&1
+0 3 * * * mysqldump -umemo -p'change-me' niuma_memo | gzip > /backup/memo-$(date +\%F).sql.gz && find /backup -name 'memo-*.sql.gz' -mtime +30 -delete
+30 3 * * * rsync -a --delete /var/www/api/storage/uploads/ /backup/uploads/

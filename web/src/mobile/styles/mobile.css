@@ -1,0 +1,70 @@
+/* ===== 移动端专用样式：大触控目标、安全区、底栏、卡片 ===== */
+.mobile {
+  font-size: 15px;
+  color: var(--t-1);
+  -webkit-text-size-adjust: 100%;
+}
+
+.mobile .page { min-height: 100dvh; padding-bottom: calc(64px + var(--safe-bottom)); background: var(--bg-page); }
+.mobile .page--bare { padding-bottom: 0; background: #fff; }
+
+/* 顶部导航 */
+.mobile .van-nav-bar { background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); }
+.mobile .van-nav-bar::after { border-color: var(--b-2); }
+.mobile .van-nav-bar__title { font-weight: 600; font-size: 17px; color: var(--t-1); }
+.mobile .van-nav-bar .van-icon { color: var(--t-1); font-size: 20px; }
+.mobile .van-nav-bar__right { font-size: 15px; }
+
+/* 底部标签栏 */
+.mobile .van-tabbar { height: 56px; background: rgba(255, 255, 255, 0.96); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); }
+.mobile .van-tabbar::after { border-color: var(--b-2); }
+.mobile .van-tabbar-item { font-size: 11px; color: var(--t-3); }
+.mobile .van-tabbar-item--active { color: var(--c-primary); font-weight: 500; }
+.mobile .van-tabbar-item__icon { font-size: 23px; margin-bottom: 3px; }
+.mobile .van-tabbar-item:active { opacity: 0.7; }
+
+/* 搜索框 */
+.mobile .van-search { padding: 8px 12px; background: transparent; }
+.mobile .van-search__content { background: #eceef1; }
+
+/* Tabs */
+.mobile .van-tabs__nav { background: #fff; }
+.mobile .van-tab { font-size: 15px; color: var(--t-2); }
+.mobile .van-tab--active { color: var(--t-1); font-weight: 600; }
+.mobile .van-tabs__line { height: 3px; border-radius: 3px; }
+
+/* 卡片 */
+.mobile .card, .mobile .note-card { border-radius: var(--r-lg); }
+.mobile .note-card { padding: 14px 16px; }
+.mobile .note-card .title { font-size: 16px; }
+.mobile .note-card .summary { font-size: 14px; }
+.mobile .note-list { gap: 10px; padding: 10px 12px; }
+.mobile .note-list .van-swipe-cell { border-radius: var(--r-lg); box-shadow: var(--sh-1); }
+.mobile .van-cell-group--inset { margin: 0 12px; box-shadow: var(--sh-1); }
+.mobile .van-cell { font-size: 15px; }
+.mobile .van-cell__label { font-size: 12.5px; margin-top: 3px; }
+
+/* 按压反馈 */
+.mobile .note-card:active, .mobile .project:active, .mobile .stat:active, .mobile .quick:active { transform: scale(0.992); transition: transform 0.08s; }
+
+/* 悬浮按钮 */
+.mobile .fab { position: fixed; right: 16px; bottom: calc(76px + var(--safe-bottom)); width: 54px; height: 54px; border-radius: 50%; background: var(--c-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; z-index: 50; box-shadow: 0 8px 20px rgba(43, 127, 255, 0.38); }
+.mobile .desktop-container { padding: 0; }
+
+/* 编辑器工具栏按钮加大触控面积 */
+.mobile .note-editor .tb { width: 38px; height: 36px; font-size: 19px; }
+
+/* 富文本正文在手机上更大更松 */
+.mobile .rich-content { font-size: 16px; line-height: 1.75; }
+.mobile .tiptap { min-height: 180px; }
+
+/* 弹层与操作面板 */
+.mobile .van-popup--bottom.van-popup--round { border-radius: var(--r-xl) var(--r-xl) 0 0; }
+.mobile .van-action-sheet__item { font-size: 16px; }
+.mobile .van-action-sheet__subname { font-size: 12px; margin-top: 4px; }
+.mobile .van-action-sheet__description { font-size: 13px; }
+.mobile .van-action-sheet__cancel { font-size: 16px; }
+
+/* 输入 */
+.mobile input, .mobile textarea { font-size: 16px; } /* 防止 iOS 聚焦自动放大 */
+.mobile .van-field__control { font-size: 16px; }

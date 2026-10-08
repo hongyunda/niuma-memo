@@ -1,0 +1,35 @@
+/* ===== 桌面端（Naive UI）专用样式 ===== */
+.desktop { height: 100%; font-size: 14px; color: var(--t-1); }
+
+/* 细滚动条 / 键盘焦点 / 选区 */
+.desktop *::-webkit-scrollbar, .n-drawer *::-webkit-scrollbar, .n-modal *::-webkit-scrollbar { width: 8px; height: 8px; }
+.desktop *::-webkit-scrollbar-thumb, .n-drawer *::-webkit-scrollbar-thumb { background: rgba(31, 35, 41, 0.14); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+.desktop *::-webkit-scrollbar-thumb:hover { background: rgba(31, 35, 41, 0.28); background-clip: padding-box; border: 2px solid transparent; }
+.desktop *::-webkit-scrollbar-track { background: transparent; }
+.desktop :focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; border-radius: 4px; }
+.desktop input:focus-visible, .desktop textarea:focus-visible, .desktop [contenteditable]:focus-visible { outline: none; }
+.desktop ::selection { background: var(--c-primary-100); }
+
+/* 普通页面容器 */
+.dpage { height: 100%; overflow-y: auto; background: var(--bg-page); }
+.dpage-inner { max-width: 1200px; margin: 0 auto; padding: 24px 32px 48px; }
+.dpage-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.dpage-head h1 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+
+/* 分段切换 */
+.seg { display: inline-flex; gap: 2px; background: var(--bg-muted); border-radius: 8px; padding: 3px; }
+.seg button { border: 0; background: transparent; border-radius: 6px; padding: 5px 10px; font-size: 13px; color: var(--t-2); cursor: pointer; white-space: nowrap; transition: all var(--dur); font-family: inherit; display: inline-flex; align-items: center; gap: 4px; }
+.seg button:hover { color: var(--t-1); }
+.seg button.on { background: #fff; color: var(--c-primary); font-weight: 500; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06); }
+.seg button i { font-size: 14px; }
+
+kbd { font-family: inherit; }
+
+/* 编辑区排版 */
+.desktop .rich-content { font-size: 15.5px; line-height: 1.8; }
+.desktop .tiptap { min-height: 260px; }
+
+/* Naive 微调 */
+.desktop .n-button .n-button__icon i, .n-dropdown-option-body__prefix i { font-size: 15px; }
+.n-dropdown-option-body__prefix i { vertical-align: -2px; }
+.n-data-table .n-data-table-tr:hover .n-data-table-td { background: var(--bg-hover) !important; }

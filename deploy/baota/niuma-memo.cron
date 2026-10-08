@@ -1,0 +1,7 @@
+SHELL=/bin/sh
+PATH=/usr/local/bin:/usr/bin:/bin
+MAILTO=""
+* * * * * www flock -n /srv/niuma-memo/shared/runtime/.reminder-cron.lock /bin/sh -c 'cd /srv/niuma-memo/current/api && /www/server/php/82/bin/php think reminder:scan' >> /srv/niuma-memo/shared/runtime/reminder.log 2>&1
+* * * * * www flock -n /srv/niuma-memo/shared/runtime/.asr-cron.lock /bin/sh -c 'cd /srv/niuma-memo/current/api && /www/server/php/82/bin/php think asr:run' >> /srv/niuma-memo/shared/runtime/asr.log 2>&1
+* * * * * www flock -n /srv/niuma-memo/shared/runtime/.titles-cron.lock /bin/sh -c 'cd /srv/niuma-memo/current/api && /www/server/php/82/bin/php think notes:titles' >> /srv/niuma-memo/shared/runtime/titles.log 2>&1
+0 3 * * * root /bin/bash /srv/niuma-memo/deploy/backup.sh >> /srv/niuma-memo/shared/runtime/backup.log 2>&1

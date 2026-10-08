@@ -1,0 +1,86 @@
+/* ===== 设计基础：全站统一的颜色 / 字号 / 圆角 / 阴影 / 动效 =====
+   桌面与移动端各自的布局样式见 desktop.css / mobile.css，这里只放共享 token */
+:root {
+  /* 品牌色 */
+  --c-primary: #2b7fff;
+  --c-primary-hover: #1f6fe6;
+  --c-primary-50: #eaf2ff;
+  --c-primary-100: #d6e6ff;
+  --c-success: #16b364;
+  --c-success-50: #e6f7ee;
+  --c-warning: #f59e0b;
+  --c-warning-50: #fff4e0;
+  --c-danger: #ef4444;
+  --c-danger-50: #feecec;
+  --c-purple: #7c3aed;
+
+  /* 文字层级 */
+  --t-1: #1f2329;
+  --t-2: #4e5969;
+  --t-3: #86909c;
+  --t-4: #c9cdd4;
+
+  /* 背景 / 边框 */
+  --bg-page: #f4f5f7;
+  --bg-card: #ffffff;
+  --bg-hover: #f5f7fa;
+  --bg-active: #eaf2ff;
+  --bg-muted: #f2f3f5;
+  --b-1: #e5e6eb;
+  --b-2: #eff0f2;
+
+  /* 圆角 */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+
+  /* 阴影 */
+  --sh-1: 0 1px 2px rgba(31, 35, 41, 0.04), 0 1px 8px rgba(31, 35, 41, 0.04);
+  --sh-2: 0 6px 20px rgba(31, 35, 41, 0.08);
+  --sh-pop: 0 10px 32px rgba(31, 35, 41, 0.14);
+
+  /* 动效 */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --dur: 0.16s;
+
+  /* 字体 */
+  --font: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', 'Microsoft YaHei', 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* 安全区 */
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+
+  /* ===== Vant 主题变量 ===== */
+  --van-primary-color: var(--c-primary);
+  --van-success-color: var(--c-success);
+  --van-warning-color: var(--c-warning);
+  --van-danger-color: var(--c-danger);
+  --van-text-color: var(--t-1);
+  --van-text-color-2: var(--t-2);
+  --van-text-color-3: var(--t-3);
+  --van-border-color: var(--b-2);
+  --van-background: var(--bg-page);
+  --van-background-2: var(--bg-card);
+  --van-radius-sm: var(--r-sm);
+  --van-radius-md: var(--r-md);
+  --van-radius-lg: var(--r-lg);
+  --van-radius-max: 999px;
+  --van-base-font: var(--font);
+  --van-cell-group-inset-radius: var(--r-lg);
+  --van-cell-group-inset-padding: 0 12px;
+  --van-cell-vertical-padding: 12px;
+  --van-cell-horizontal-padding: 16px;
+  --van-button-round-radius: 999px;
+  --van-button-default-height: 44px;
+  --van-button-small-height: 32px;
+  --van-tag-radius: 4px;
+  --van-popover-action-height: 40px;
+  --van-popover-action-width: 148px;
+  --van-popover-radius: var(--r-md);
+  --van-action-sheet-item-height: 52px;
+  --van-toast-radius: var(--r-md);
+  --van-dialog-radius: var(--r-lg);
+  --van-popup-round-radius: var(--r-xl);
+}
